@@ -1,4 +1,5 @@
-add_library(Shared STATIC "Cool.cpp" "Cool.h")
+file(GLOB_RECURSE SHARED_SOURCE "${PROJECT_SOURCE_DIR}/shared/*.cpp" "${PROJECT_SOURCE_DIR}/shared/*.h")
+add_library(Shared STATIC ${SHARED_SOURCE})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Shared PROPERTY CXX_STANDARD 20)
