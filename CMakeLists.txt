@@ -12,9 +12,9 @@ project ("DSM")
 add_subdirectory(external/subprocess)
 
 add_subdirectory(shared)
+add_subdirectory(coordinator)
 add_subdirectory(server)
-add_subdirectory(client)
 
 target_include_directories(Shared PRIVATE external/cpp-httplib)
+target_include_directories(Coordinator PRIVATE external/cpp-httplib)
 target_include_directories(Server PRIVATE external/cpp-httplib)
-target_include_directories(Client PRIVATE external/cpp-httplib)
