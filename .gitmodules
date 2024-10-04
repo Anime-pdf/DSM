@@ -1,3 +1,0 @@
-[submodule "external/subprocess"]
-	path = external/subprocess
-	url = https://github.com/benman64/subprocess

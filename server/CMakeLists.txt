@@ -1,9 +1,10 @@
-﻿file(GLOB_RECURSE SERVER_SOURCE "${PROJECT_SOURCE_DIR}/server/*.cpp" "${PROJECT_SOURCE_DIR}/server/*.h")
-add_executable(Server ${SERVER_SOURCE})
+﻿set(TARGET_NAME Server)
 
-target_link_libraries(Server PRIVATE Shared subprocess)
-target_include_directories(Server PRIVATE ${PROJECT_SOURCE_DIR}/shared)
+file(GLOB_RECURSE SERVER_SOURCE "${PROJECT_SOURCE_DIR}/server/*.cpp" "${PROJECT_SOURCE_DIR}/server/*.h")
+add_executable(${TARGET_NAME} ${SERVER_SOURCE})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Server PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+  target_compile_features(${TARGET_NAME} PRIVATE cxx_std_20)
 endif()

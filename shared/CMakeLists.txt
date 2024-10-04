@@ -1,6 +1,10 @@
+set(TARGET_NAME Shared)
+
 file(GLOB_RECURSE SHARED_SOURCE "${PROJECT_SOURCE_DIR}/shared/*.cpp" "${PROJECT_SOURCE_DIR}/shared/*.h")
-add_library(Shared STATIC ${SHARED_SOURCE})
+add_library(${TARGET_NAME} STATIC ${SHARED_SOURCE})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Shared PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+  target_compile_features(${TARGET_NAME} PRIVATE cxx_std_20)
 endif()

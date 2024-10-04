@@ -9,12 +9,15 @@ project ("DSM")
 
 # TODO: Add tests
 
-add_subdirectory(external/subprocess)
+set(INCLUDE_DIRS 
+		external/cpp-httplib
+		external/subprocess
+		${PROJECT_SOURCE_DIR}/shared
+)
 
 add_subdirectory(shared)
 add_subdirectory(coordinator)
 add_subdirectory(server)
 
-target_include_directories(Shared PRIVATE external/cpp-httplib)
-target_include_directories(Coordinator PRIVATE external/cpp-httplib)
-target_include_directories(Server PRIVATE external/cpp-httplib)
+target_include_directories(Coordinator PRIVATE ${INCLUDE_DIRS})
+target_include_directories(Server PRIVATE ${INCLUDE_DIRS})

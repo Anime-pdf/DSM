@@ -1,9 +1,10 @@
-﻿file(GLOB_RECURSE COORDINATOR_SOURCE "${PROJECT_SOURCE_DIR}/coordinator/*.cpp" "${PROJECT_SOURCE_DIR}/coordinator/*.h")
-add_executable(Coordinator ${COORDINATOR_SOURCE})
+﻿set(TARGET_NAME Coordinator)
 
-target_link_libraries(Coordinator PRIVATE Shared subprocess)
-target_include_directories(Coordinator PRIVATE ${PROJECT_SOURCE_DIR}/shared)
+file(GLOB_RECURSE COORDINATOR_SOURCE "${PROJECT_SOURCE_DIR}/coordinator/*.cpp" "${PROJECT_SOURCE_DIR}/coordinator/*.h")
+add_executable(${TARGET_NAME} ${COORDINATOR_SOURCE})
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET Coordinator PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+  target_compile_features(${TARGET_NAME} PRIVATE cxx_std_20)
 endif()
